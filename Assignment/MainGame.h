@@ -3,10 +3,10 @@
 #include <SDL/SDL.h>
 #include <GL/glew.h>
 
-#include "GLSLProgram.h"
-#include "Sprite.h"
-#include "GLTexture.h"
-
+#include <Engine/GLSLProgram.h>
+#include <Engine/Sprite.h>
+#include <Engine/GLTexture.h>
+#include <Engine/Window.h>
 enum class GameState {PLAY, EXIT};
 
 class MainGame
@@ -25,7 +25,7 @@ private:
     void drawGame();
 	void calculateFPS();
 
-    SDL_Window* _window;
+    Window _window;
     int _screenWidth;
     int _screenHeight;
     GameState _gameState;
