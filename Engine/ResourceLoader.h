@@ -93,19 +93,6 @@ public:
 				}
 			}
 
-			//Mesh mesh;
-			//Vertex data[] = { Vertex(physx::PxVec3(-0.75, -1, -0.75)),
-			//	Vertex(physx::PxVec3(0, 1, 0)),
-			//	Vertex(physx::PxVec3(-0.75, -1, .75)),
-			//	Vertex(physx::PxVec3(.75, -1, -.75)),
-			//	Vertex(physx::PxVec3(.75, -1, .75)) };
-
-			//int indicess[] = { 0, 1, 3,
-			//	3, 1, 4,
-			//	4, 1, 2,
-			//	2, 1, 0 };
-
-			//mesh.addVertices(data, ARRAY_SIZE(data), indicess, ARRAY_SIZE(indices));
 			mesh.addVertices(&vertices.front(), vertices.size(), &indices.front(), indices.size());
 			return Mesh();
 		}
