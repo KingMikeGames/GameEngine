@@ -1,29 +1,37 @@
 #pragma once
-#include <SDL\SDL.h>
-#include <GL/glew.h>
-#include <string>
 
-enum WindowFlags
-{
-	INVISIBLE = 0x1,
-	FULLSCREEN = 0x2,
-	BORDERLESS = 0x4
-};
+#include <string>
 
 class Window
 {
 public:
-	Window();
-	~Window();
+	// Initialize SDL, Create a window, Initialize glew
+	static void create(int width, int height, const std::string& title);
 
-	int create(std::string windowTitle, int screenWidth, int screenHeight, unsigned int currentFlags );
+	// Swap Buffers
+	static void render();
 
-	int getScreenWidth() { return _screenWidth; }
-	int getScreenHeight() { return _screenHeight; }
+	// Destroy window and quit SDL
+	static void dispose();
 
-	void swapBuffers();
+	// Check if close has been requested
+	static bool isCloseRequested();
+
+	// Get window width
+	static int getWidth();
+
+	// Get window height
+	static int getHeight();
+
+	// Get window title
+	static const std::string& getTitle();
+
+	//set fullscreen true or false
+	static void setFullScreen(bool value);
+
+protected:
 private:
-	SDL_Window* _sdlWindow;
-	int _screenHeight, _screenWidth;
+	static int m_width;
+	static int m_height;
+	static std::string m_title;
 };
-

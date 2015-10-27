@@ -1,67 +1,73 @@
 #include "Window.h"
+#include <sdl/SDL.h>
+#include <GL/glew.h>
+#include "sdl_backend.h"
 
-#include "Errors.h"
+int Window::m_width = 0;
+int Window::m_height = 0;
+std::string Window::m_title = "Title";
 
-Window::Window()
+void Window::create(int width, int height, const std::string& title)
 {
+	m_width = width;
+	m_height = height;
+	m_title = title;
+
+	SDL_Init(SDL_INIT_EVERYTHING);
+
+	// OpenGL attributes
+	SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8);
+	SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 8);
+	SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 8);
+	SDL_GL_SetAttribute(SDL_GL_ALPHA_SIZE, 8);
+	SDL_GL_SetAttribute(SDL_GL_BUFFER_SIZE, 32);
+	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 16);
+	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+
+	// Create SDL window
+	SDLCreateWindow(title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, false);
+	SDL_GL_SetSwapInterval(0);
+	// Initialize and error check GLEW
+	GLenum res = glewInit();
+	if (res != GLEW_OK)
+	{
+		fprintf(stderr, "Error: '%s'\n", glewGetErrorString(res));
+	}
 }
 
 
-Window::~Window()
+void Window::render()
 {
+	SDLSwapBuffers();
 }
 
-int Window::create(std::string windowTitle, int screenWidth, int screenHeight, unsigned int currentFlags)
+void Window::dispose()
 {
-
-	Uint32 flags = SDL_WINDOW_OPENGL;
-
-	if (currentFlags & INVISIBLE)
-	{
-		flags |= SDL_WINDOW_HIDDEN;
-	}
-	if (currentFlags & FULLSCREEN)
-	{
-		flags |= SDL_WINDOW_FULLSCREEN_DESKTOP;
-	}
-	if (currentFlags & BORDERLESS)
-	{
-		flags |= SDL_WINDOW_BORDERLESS;
-	}
-
-	//Open an SDL window
-	_sdlWindow = SDL_CreateWindow(windowTitle.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screenWidth, screenHeight, SDL_WINDOW_OPENGL | flags);
-	if (_sdlWindow == nullptr) {
-		fatalError("SDL Window could not be created!");
-	}
-
-	//Set up our OpenGL context
-	SDL_GLContext glContext = SDL_GL_CreateContext(_sdlWindow);
-	if (glContext == nullptr) {
-		fatalError("SDL_GL context could not be created!");
-	}
-
-	//Set up glew (optional but recommended)
-	GLenum error = glewInit();
-	if (error != GLEW_OK) {
-		fatalError("Could not initialize glew!");
-	}
-
-	std::printf("***    OpenGL Version: %s    ****\n", glGetString(GL_VERSION));
-
-	//Set the background color to blue
-	glClearColor(0.0f, 0.6f, 0.8f, 1.0f);
-	//vsync
-	SDL_GL_SetSwapInterval(1);
-
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-	return 0;
+	SDLDestroyWindow();
+	SDL_Quit();
 }
 
-void Window::swapBuffers()
+bool Window::isCloseRequested()
 {
-	//Swap our buffer and draw everything to the screen!
-	SDL_GL_SwapWindow(_sdlWindow);
+	return SDLGetIsCloseRequested();
+}
+
+void Window::setFullScreen(bool value)
+{
+	SDLSetWindowFullscreen(value);
+}
+
+int Window::getWidth()
+{
+	return m_width;
+}
+
+int Window::getHeight()
+{
+	return m_height;
+}
+
+const std::string& Window::getTitle()
+{
+	return m_title;
 }
