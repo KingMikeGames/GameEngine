@@ -13,11 +13,11 @@ float tempAmount = 0.0f;
 
 Game::Game()
 {
-	//Vertex data[] = { Vertex(glm::vec3(-0.75, -1, -0.75)),
-	//	Vertex(glm::vec3(0, 1, 0)),
-	//	Vertex(glm::vec3(-0.75, -1, .75)),
-	//	Vertex(glm::vec3(.75, -1, -.75)),
-	//	Vertex(glm::vec3(.75, -1, .75)) };
+	//Vertex data[] = { Vertex(glm::vec3(-0.75, -1, -0.75)), //BBL
+	//	Vertex(glm::vec3(0, 1, 0)),							//TOP
+	//	Vertex(glm::vec3(-0.75, -1, .75)),					//fbl
+	//	Vertex(glm::vec3(.75, -1, -.75)),					//bbr
+	//	Vertex(glm::vec3(.75, -1, .75)) };					//fbr
 
 	//int indices[] = { 0, 1, 3,
 	//	3, 1, 4,
@@ -48,8 +48,8 @@ void Game::update()
 {
 	temp += Time::getDelta();
 	transform.setScale(glm::vec3(1.0f, 1.0f, 1.0f));
-	transform.setTranslation(glm::vec3(0.0f, 0.0f, 0.0f));
-	transform.setRotation(glm::quat(temp, glm::vec3(0, 1, 0)));
+	transform.setTranslation(glm::vec3(0.0f, 0.0f, -5.0f));
+	transform.setRotation(glm::angleAxis(temp, glm::vec3(0, 1, 0)));
 }
 
 void Game::render()

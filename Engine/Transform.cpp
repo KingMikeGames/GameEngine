@@ -27,15 +27,13 @@ void Transform::setProjection(float _fov, float _width, float _height, float _ne
 glm::mat4 Transform::getTransformation()
 {
 	glm::mat4 translationMatrix = glm::translate(glm::mat4(), translation);
-	glm::mat4 rotationMatrix = glm::mat4_cast(rotation);
+	glm::mat4 rotationMatrix = glm::mat4_cast(glm::normalize(rotation));
 	glm::mat4 scaleMatrix = glm::scale(glm::mat4(), scale);
 	return translationMatrix * rotationMatrix * scaleMatrix;
 }
 
 glm::mat4 Transform::getProjectedTransformation()
 {
-	
-	std::cout << zFar << std::endl;
 	return glm::perspective(fov, width / height, zNear, zFar) * getTransformation();
 
 }

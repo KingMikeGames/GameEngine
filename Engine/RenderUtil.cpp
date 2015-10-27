@@ -13,14 +13,13 @@ void RenderUtil::initGraphics()
 	glClearColor(0.23137254902f, 0.61960784313f, 0.69411764705f, 0.0f);
 
 	// set frontface of polygon to clockwise
-	glFrontFace(GL_CW);
+	//glFrontFace(GL_CW);
 	glCullFace(GL_BACK);
 	// cull the back face so we don't waste time drawing both
 	glEnable(GL_CULL_FACE);
 
 	// draw closer things on top of further things
 	glEnable(GL_DEPTH_TEST);
-
 
 	glEnable(GL_DEPTH_CLAMP);
 }
