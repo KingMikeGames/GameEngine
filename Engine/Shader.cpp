@@ -1,10 +1,9 @@
-#include <GL/glew.h>
 #include "Shader.h"
 #include <cassert>
 #include <memory>
 #include <fstream>
 #include <iostream>
-
+#include <GL/glew.h>
 
 #include "util.h"
 
@@ -32,8 +31,9 @@ void Shader::bind()
 	glUseProgram(m_program);
 }
 
-void Shader::updateUniforms(const glm::mat4 & worldMatrix, const glm::mat4 & projectedMatrix)
+void Shader::updateUniforms(const glm::mat4& worldMatrix, const glm::mat4& projectedMatrix, Material& material)
 {
+
 }
 
 void Shader::addUniform(const std::string& uniform)
@@ -47,15 +47,30 @@ void Shader::addUniform(const std::string& uniform)
 
 void Shader::addVertexShaderFromFile(const std::string& text)
 {
-	addProgram(text, GL_VERTEX_SHADER);
+	addVertexShader(*loadShader(text));
 }
 
 void Shader::addGeometryShaderFromFile(const std::string& text)
 {
-	addProgram(text, GL_GEOMETRY_SHADER);
+	addGeometryShader(*loadShader(text));
 }
 
 void Shader::addFragmentShaderFromFile(const std::string& text)
+{
+	addFragmentShader(*loadShader(text));
+}
+
+void Shader::addVertexShader(const std::string& text)
+{
+	addProgram(text, GL_VERTEX_SHADER);
+}
+
+void Shader::addGeometryShader(const std::string& text)
+{
+	addProgram(text, GL_GEOMETRY_SHADER);
+}
+
+void Shader::addFragmentShader(const std::string& text)
 {
 	addProgram(text, GL_FRAGMENT_SHADER);
 }
@@ -77,7 +92,7 @@ void Shader::setUniform(const std::string& name, const glm::vec3& value)
 
 void Shader::setUniform(const std::string& name, const glm::mat4& value)
 {
-	glUniformMatrix4fv(m_uniforms.at(name), 1, false, &(value[0][0]));
+	glUniformMatrix4fv(m_uniforms.at(name), 1, GL_FALSE, &(value[0][0]));
 }
 
 void Shader::addProgram(const std::string& text, int type)
@@ -135,3 +150,27 @@ void Shader::compileShader()
 
 	glUseProgram(m_program);
 }
+
+static std::shared_ptr<std::string> loadShader(const std::string& fileName)
+{
+	std::ifstream file;
+	file.open("./res/shaders/" + fileName);
+
+	std::shared_ptr<std::string> output(new std::string());
+	std::string line;
+
+	if (file.is_open())
+	{
+		while (file.good())
+		{
+			getline(file, line);
+			output->append(line + "\n");
+		}
+	}
+	else
+	{
+		std::cerr << "Unable to load shader: " << fileName << std::endl;
+	}
+
+	return output;
+};

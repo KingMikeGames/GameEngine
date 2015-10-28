@@ -144,6 +144,7 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Input.h" />
+    <ClInclude Include="Material.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="RenderUtil.h" />
     <ClInclude Include="ResourceLoader.h" />
@@ -161,6 +162,7 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="Material.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="RenderUtil.cpp" />
     <ClCompile Include="ResourceLoader.cpp" />

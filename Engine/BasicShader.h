@@ -2,6 +2,7 @@
 
 #include "Shader.h"
 #include <glm\glm.hpp>
+#include "Util.h"
 
 class BasicShader : public Shader
 {
@@ -15,7 +16,7 @@ public:
 		return &instance;
 	}
 
-	virtual void updateUniforms(const glm::mat4& worldMatrix, const glm::mat4& projectedMatrix) override;
+	virtual void updateUniforms(const glm::mat4& worldMatrix, const glm::mat4& projectedMatrix, Material& material) override;
 
 protected:
 private:

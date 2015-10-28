@@ -7,7 +7,8 @@
 #include <glm\glm.hpp>
 #include <glm\gtx\transform.hpp>
 #include "Window.h"
-
+#include "BasicShader.h"
+#include <memory>
 float temp = 0.0f;
 float tempAmount = 0.0f;
 
@@ -39,17 +40,12 @@ Game::Game()
 	m_mesh.addVertices(data, ARRAY_SIZE(data), indices, ARRAY_SIZE(indices));
 
 	//ResourceLoader::loadMesh("cube.obj", m_mesh);
-
+	m_shader = new BasicShader;
 	m_texture = Texture("small.png");
-	m_shader.addVertexShaderFromFile(ResourceLoader::loadShader("basicVertex.vs"));
-	m_shader.addFragmentShaderFromFile(ResourceLoader::loadShader("basicFragment.fs"));
-	m_shader.compileShader();
-
-
+	m_material = Material(&m_texture, glm::vec3(1.0f, 1.0f, 1.0f));
 
 	m_transform.setProjection(45.0f, (float)Window::getWidth(), (float)Window::getHeight(), 0.1f, 100.0f);
 	m_transform.setCamera(m_camera);
-	m_shader.addUniform("transform");
 }
 Game::~Game()
 {
@@ -72,8 +68,8 @@ void Game::update()
 
 void Game::render()
 {
-	m_shader.bind();
-	m_shader.setUniform("transform", m_transform.getProjectedTransformation());
+	m_shader->bind();
+	m_shader->updateUniforms(m_transform.getTransformation(), m_transform.getProjectedTransformation(), m_material);
 	m_texture.bind();
 	m_mesh.draw();
 }
