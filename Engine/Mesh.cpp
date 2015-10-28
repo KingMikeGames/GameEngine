@@ -24,12 +24,7 @@ void Mesh::addVertices(Vertex* vertices, int vertsize, int* indices, int indexSi
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ibo);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexSize * sizeof(int), indices, GL_STATIC_DRAW);
 
-	for (unsigned i = 0; i < vertsize; i++)
-	{
-		vertices[i].uv = glm::vec2( 0.0f, 0.0f);
-		vertices[i].normal = glm::vec3(1.0f, 0.0f, 0.0f);
-		vertices[i].color = glm::vec3(1.0f, 0.0f, 0.0f);
-	} 
+	
 }
 
 void Mesh::draw()

@@ -91,6 +91,14 @@ public:
 				default:
 					break;
 				}
+
+				for (unsigned i = 0; i < vertices.size(); i++)
+				{
+					vertices[i].uv = glm::vec2(0.0f, 0.0f);
+					vertices[i].normal = glm::vec3(1.0f, 0.0f, 0.0f);
+					vertices[i].color = glm::vec3(0.0f, 1.0f, 0.0f);
+				}
+				
 			}
 
 			mesh.addVertices(&vertices.front(), vertices.size(), &indices.front(), indices.size());
