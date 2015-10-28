@@ -91,15 +91,17 @@ public:
 				default:
 					break;
 				}
-
-				for (unsigned i = 0; i < vertices.size(); i++)
-				{
-					vertices[i].uv = glm::vec2(0.0f, 0.0f);
-					vertices[i].normal = glm::vec3(1.0f, 0.0f, 0.0f);
-					vertices[i].color = glm::vec3(0.0f, 1.0f, 0.0f);
-				}
-				
 			}
+
+			vertices[0].color = glm::normalize(glm::vec3(255.0f, 0.0f, 0.0f));
+			vertices[1].color = glm::normalize(glm::vec3(255.0f, 127.0f, 0.0f));
+			vertices[2].color = glm::normalize(glm::vec3(255.0f, 255.0f, 0.0f));
+			vertices[3].color = glm::normalize(glm::vec3(0.0f, 255.0f, 0.0f));
+			vertices[4].color = glm::normalize(glm::vec3(0.0f, 0.0f, 255.0f));
+			vertices[5].color = glm::normalize(glm::vec3(0.0f, 0.0f, 255.0f));
+			vertices[6].color = glm::normalize(glm::vec3(75.0f, 0.0f, 130.0f));
+			vertices[7].color = glm::normalize(glm::vec3(139.0f, 0.0f, 255.0f));
+
 
 			mesh.addVertices(&vertices.front(), vertices.size(), &indices.front(), indices.size());
 			return Mesh();
