@@ -3,7 +3,9 @@
 #include <math.h>
 #include <glm\gtx\transform.hpp>
 #include <iostream>
+
 static float zNear, zFar, width, height, fov;
+static Camera* m_camera;
 
 Transform::Transform()
 {
@@ -34,6 +36,23 @@ glm::mat4 Transform::getTransformation()
 
 glm::mat4 Transform::getProjectedTransformation()
 {
-	return glm::perspective(fov, width / height, zNear, zFar) * getTransformation();
 
+	glm::mat4 cameraMatrix = initCamera(m_camera->getPos() + m_camera->getForward(), m_camera->getUp());
+
+	return glm::perspective(fov, width / height, zNear, zFar) * cameraMatrix * getTransformation();
+}
+
+glm::mat4 Transform::initCamera(const glm::vec3 & target, const glm::vec3 & up)
+{
+	return glm::lookAt(m_camera->getPos(), target, up);
+}
+
+Camera & Transform::getCamera()
+{
+	return *m_camera;
+}
+
+void Transform::setCamera(Camera & camera)
+{
+	m_camera = &camera;
 }

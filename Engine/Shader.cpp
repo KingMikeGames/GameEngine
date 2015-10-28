@@ -1,12 +1,15 @@
+#include <GL/glew.h>
 #include "Shader.h"
 #include <cassert>
 #include <memory>
 #include <fstream>
 #include <iostream>
-#include <GL/glew.h>
+
 
 #include "util.h"
 
+static void checkShaderError(int shader, int flag, bool isProgram, const std::string& errorMessage);
+static std::shared_ptr<std::string> loadShader(const std::string& fileName);
 
 Shader::Shader()
 {
@@ -27,6 +30,10 @@ Shader::~Shader()
 void Shader::bind()
 {
 	glUseProgram(m_program);
+}
+
+void Shader::updateUniforms(const glm::mat4 & worldMatrix, const glm::mat4 & projectedMatrix)
+{
 }
 
 void Shader::addUniform(const std::string& uniform)

@@ -23,3 +23,15 @@ void RenderUtil::initGraphics()
 
 	glEnable(GL_DEPTH_CLAMP);
 }
+
+void RenderUtil::enableTexture(bool enabled)
+{
+	if (enabled)
+	{
+		glEnable(GL_TEXTURE_2D);
+	}
+	else
+	{
+		glDisable(GL_TEXTURE_2D);
+	}
+}

@@ -19,6 +19,9 @@ public:
 	void setUniform(const std::string& name, const glm::mat4& value);
 	void compileShader();
 	void bind();
+
+	virtual void updateUniforms(const glm::mat4& worldMatrix, const glm::mat4& projectedMatrix);
+
 private:
 	void addProgram(const std::string& text, int type);
 

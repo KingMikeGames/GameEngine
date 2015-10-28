@@ -1,6 +1,8 @@
 #pragma once
 #include <glm/glm.hpp>
 #include <glm/gtx/quaternion.hpp>
+#include "Camera.h"
+
 class Transform
 {
 public:
@@ -11,6 +13,10 @@ public:
 
 	glm::mat4 getTransformation();
 	glm::mat4 getProjectedTransformation();
+	glm::mat4 initCamera(const glm::vec3& target, const glm::vec3& up);
+
+	Camera& getCamera();
+	void setCamera(Camera& camera);
 
 	void setTranslation(glm::vec3 trans) { translation = trans; }
 	void setRotation(glm::quat rot) { rotation = rot; }
