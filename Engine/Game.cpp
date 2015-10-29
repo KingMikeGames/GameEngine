@@ -43,7 +43,7 @@ void Game::init()
 		4, 3, 7,
 	};
 
-	m_mesh.addVertices(data, ARRAY_SIZE(data), indices, ARRAY_SIZE(indices));
+	m_mesh = new Mesh("res/models/star.obj");
 
 	//ResourceLoader::loadMesh("cube.obj", m_mesh);
 	m_shader = new BasicShader;
@@ -52,25 +52,27 @@ void Game::init()
 
 	m_transform.setProjection(45.0f, (float)Window::getWidth(), (float)Window::getHeight(), 0.1f, 100.0f);
 	m_transform.setCamera(m_camera);
+
+	m_meshRenderer = new MeshRenderer(*m_mesh, m_material);
+	m_root.AddComponent(m_meshRenderer);
 }
 
 Game::~Game()
 {
-
+	
 }
 
 void Game::input()
 {
-
+	m_camera.input();
+	m_root.Input();
 }
 
 void Game::update()
 {
-	m_camera.input();
 	temp += (float)Time::getDelta();
-	m_transform.setScale(glm::vec3(1.0f, 1.0f, 1.0f));
-	m_transform.setTranslation(glm::vec3(0.0f, 0.0f, -1.0f));
-	m_transform.setRotation(glm::angleAxis(temp, glm::vec3(0, 1, 0)));
+	m_root.GetTransform().setRotation(glm::angleAxis(temp, glm::vec3(0, 1, 0)));
+	m_root.Update();
 }
 
 void Game::render()
@@ -78,5 +80,5 @@ void Game::render()
 	m_shader->bind();
 	m_shader->updateUniforms(m_transform.getTransformation(), m_transform.getProjectedTransformation(), m_material);
 	m_texture.bind();
-	m_mesh.draw();
+	m_root.Render();
 }

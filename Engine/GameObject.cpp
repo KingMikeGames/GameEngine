@@ -6,6 +6,11 @@ void GameObject::AddChild(GameObject& child)
 	m_children.push_back(&child);
 }
 
+void GameObject::AddComponent(GameComponent* component)
+{
+	m_components.push_back(component);
+}
+
 void GameObject::Input()
 {
 	for (unsigned int i = 0; i < m_components.size(); i++)

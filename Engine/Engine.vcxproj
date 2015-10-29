@@ -149,6 +149,9 @@
     <ClInclude Include="Input.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="Mesh.h" />
+    <ClInclude Include="MeshRenderer.h" />
+    <ClInclude Include="OBJ_Loader.h" />
+    <ClInclude Include="ReferenceCounter.h" />
     <ClInclude Include="RenderUtil.h" />
     <ClInclude Include="ResourceLoader.h" />
     <ClInclude Include="sdl_backend.h" />
@@ -169,6 +172,8 @@
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="MeshRenderer.cpp" />
+    <ClCompile Include="OBJ_Loader.cpp" />
     <ClCompile Include="RenderUtil.cpp" />
     <ClCompile Include="ResourceLoader.cpp" />
     <ClCompile Include="sdl_backend.cpp" />

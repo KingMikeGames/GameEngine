@@ -11,9 +11,9 @@ public:
 
 	static void setProjection(float _fov, float _width, float _height, float _near, float _far);
 
-	glm::mat4 getTransformation();
-	glm::mat4 getProjectedTransformation();
-	glm::mat4 initCamera(const glm::vec3& target, const glm::vec3& up);
+	glm::mat4 getTransformation() const;
+	glm::mat4 getProjectedTransformation() const;
+	glm::mat4 initCamera(const glm::vec3& target, const glm::vec3& up) const;
 
 	static inline Camera& getCamera() { return *s_camera; }
 	static void setCamera(Camera& camera);

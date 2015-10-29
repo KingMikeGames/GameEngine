@@ -19,7 +19,7 @@ Camera::~Camera()
 
 void Camera::input()
 {
-	float sensitivity = 0.01f;
+	float sensitivity = 0.005f;
 	float moveAmount = float(5.0f * Time::getDelta());
 	float rotationAmount = (float)(Time::getDelta());
 
