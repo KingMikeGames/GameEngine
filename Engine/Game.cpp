@@ -20,12 +20,14 @@ Game::Game()
 void Game::init()
 {
 
+	//cube data
+	/*
 	Vertex data[] = { Vertex(glm::vec3(1.0f, -1.0f, -1.0f),	glm::vec2(0.0f,1.0f),	glm::vec3(0.0f,0.0f,0.0f),	glm::vec4(1.0f,1.0f,1.0f,1.0f)),
 		Vertex(glm::vec3(1.0f, -1.0f, 1.0f),	glm::vec2(1.0f,1.0f),	glm::vec3(0.0f,0.0f,0.0f),	glm::vec4(1.0f,1.0f,1.0f,1.0f)),
 		Vertex(glm::vec3(-1.0f, -1.0f, 1.0f),	glm::vec2(0.0f,1.0f),	glm::vec3(0.0f,0.0f,0.0f),	glm::vec4(1.0f,1.0f,1.0f,1.0f)),
 		Vertex(glm::vec3(-1.0f, -1.0f, -1.0f),	glm::vec2(1.0f,1.0f),	glm::vec3(0.0f,0.0f,0.0f),	glm::vec4(1.0f,1.0f,1.0f,1.0f)),
 		Vertex(glm::vec3(1.0f, 1.0f, -1.0f),	glm::vec2(0.0f,0.0f),	glm::vec3(0.0f,0.0f,0.0f),	glm::vec4(1.0f,1.0f,1.0f,1.0f)),
-		Vertex(glm::vec3(1.0f, 1.0f, 1.0f),	glm::vec2(1.0f,0.0f),	glm::vec3(0.0f,0.0f,0.0f),	glm::vec4(1.0f,1.0f,1.0f,1.0f)),
+		Vertex(glm::vec3(1.0f, 1.0f, 1.0f),		glm::vec2(1.0f,0.0f),	glm::vec3(0.0f,0.0f,0.0f),	glm::vec4(1.0f,1.0f,1.0f,1.0f)),
 		Vertex(glm::vec3(-1.0f, 1.0f, 1.0f),	glm::vec2(0.0f,0.0f),	glm::vec3(0.0f,0.0f,0.0f),	glm::vec4(1.0f,1.0f,1.0f,1.0f)),
 		Vertex(glm::vec3(-1.0f, 1.0f, -1.0f),	glm::vec2(1.0f,0.0f),	glm::vec3(0.0f,0.0f,0.0f),	glm::vec4(1.0f,1.0f,1.0f,1.0f)) };
 
@@ -42,8 +44,9 @@ void Game::init()
 		4, 0, 3,
 		4, 3, 7,
 	};
+	*/
 
-	m_mesh = new Mesh("res/models/star.obj");
+	m_mesh = new Mesh("res/models/cube.obj");
 
 	//ResourceLoader::loadMesh("cube.obj", m_mesh);
 	m_shader = new BasicShader;
@@ -73,12 +76,4 @@ void Game::update()
 	temp += (float)Time::getDelta();
 	m_root.GetTransform().setRotation(glm::angleAxis(temp, glm::vec3(0, 1, 0)));
 	m_root.Update();
-}
-
-void Game::render()
-{
-	m_shader->bind();
-	m_shader->updateUniforms(m_transform.getTransformation(), m_transform.getProjectedTransformation(), m_material);
-	m_texture.bind();
-	m_root.Render();
 }

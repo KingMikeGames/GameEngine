@@ -3,6 +3,7 @@
 #include <vector>
 #include "Transform.h"
 #include "GameComponent.h"
+#include "Shader.h"
 
 class GameObject
 {
@@ -13,7 +14,7 @@ public:
 
 	void Input();
 	void Update();
-	void Render();
+	void Render(Shader* shader);
 
 	inline Transform& GetTransform() { return m_transform; }
 protected:

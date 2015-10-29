@@ -13,9 +13,8 @@ public:
 		m_material = &material;
 	}
 
-	virtual void Render(const Transform& transform)
+	virtual void Render(const Transform& transform, Shader* shader) override
 	{
-		Shader* shader = BasicShader::getInstance();
 		shader->bind();
 		shader->updateUniforms(transform.getProjectedTransformation(), transform.getProjectedTransformation(), *m_material);
 		m_mesh->draw();

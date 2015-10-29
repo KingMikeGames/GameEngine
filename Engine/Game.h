@@ -17,7 +17,9 @@ public:
 	void init();
 	void input();
 	void update();
-	void render();
+
+	inline GameObject& getRoot() { return m_root; }
+
 private:
 	Game(Game& game) {}
 	void operator=(Game& game) {}

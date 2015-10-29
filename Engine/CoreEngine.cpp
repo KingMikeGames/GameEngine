@@ -2,7 +2,6 @@
 #include "Time.h"
 #include "Window.h"
 #include "Input.h"
-#include "RenderUtil.h"
 #include "Util.h"
 
 #include <stdio.h>
@@ -13,18 +12,20 @@ CoreEngine::CoreEngine(int width, int height, double frameRate, Game * game) :
 	m_isRunning(false),
 	m_width(width),
 	m_height(height),
-	m_frameTime(1.0/frameRate),
-	m_game(game) { }
+	m_frameTime(1.0 / frameRate),
+	m_game(game),
+	m_renderingEngine(nullptr) {}
 
 CoreEngine::~CoreEngine()
 {
 	Window::dispose();
+	delete m_renderingEngine;
 }
 
 void CoreEngine::createWindow(const std::string & title)
 {
 	Window::create(m_width, m_height, title);
-	RenderUtil::initGraphics();
+	m_renderingEngine = new RenderingEngine();
 }
 
 void CoreEngine::start()
@@ -90,8 +91,7 @@ void CoreEngine::Run()
 
 		if (render || IGNORE_FRAME_CAP)
 		{
-			RenderUtil::clearScreen();
-			m_game->render();
+			m_renderingEngine->Render(&m_game->getRoot());
 			Window::render();
 			frames++;
 		}
