@@ -78,11 +78,13 @@ void CoreEngine::Run()
 			render = true;
 
 			if (Window::isCloseRequested())
+			{
 				stop();
+			}
+				
 
 			Time::setDelta(m_frameTime);
 			Input::update();
-
 			m_game->input();
 			m_game->update();
 
