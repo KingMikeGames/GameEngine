@@ -1,15 +1,17 @@
 #pragma once
 
-#include "GameObject.h"
+#include "gameObject.h"
 
 class RenderingEngine
 {
 public:
 	RenderingEngine();
-	virtual ~RenderingEngine();
 
 	void Render(GameObject* object);
 
-	static void EnableTexture(bool enabled);
+	virtual ~RenderingEngine();
+protected:
+private:
+	RenderingEngine(const RenderingEngine& other) {}
+	void operator=(const RenderingEngine& other) {}
 };
-

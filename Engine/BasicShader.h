@@ -7,8 +7,6 @@
 class BasicShader : public Shader
 {
 public:
-	BasicShader();
-	~BasicShader();
 
 	static BasicShader* getInstance()
 	{
@@ -20,6 +18,8 @@ public:
 
 protected:
 private:
+	BasicShader();
+
 	BasicShader(BasicShader const&) {}
 	void operator=(BasicShader const&) {}
 

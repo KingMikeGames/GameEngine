@@ -1,5 +1,3 @@
-#pragma once
-
 #include "gameComponent.h"
 #include "mesh.h"
 #include "basicShader.h"
@@ -13,10 +11,10 @@ public:
 		m_material = &material;
 	}
 
-	virtual void Render(const Transform& transform, Shader* shader) override
+	virtual void Render(const Transform& transform, Shader* shader)
 	{
 		shader->bind();
-		shader->updateUniforms(transform.getProjectedTransformation(), transform.getProjectedTransformation(), *m_material);
+		shader->updateUniforms(transform.getTransformation(), transform.getProjectedTransformation(), *m_material);
 		m_mesh->draw();
 	}
 protected:

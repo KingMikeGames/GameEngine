@@ -3,7 +3,6 @@
 #include <vector>
 #include "Transform.h"
 #include "GameComponent.h"
-#include "Shader.h"
 
 class GameObject
 {

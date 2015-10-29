@@ -13,11 +13,6 @@ BasicShader::BasicShader()
 	//addUniform("sampler2D");
 }
 
-BasicShader::~BasicShader()
-{
-
-}
-
 static unsigned char whitePixel[] = { 0xFF, 0xFF, 0xFF, 0xFF };
 
 void BasicShader::updateUniforms(const glm::mat4& worldMatrix, const glm::mat4& projectedMatrix, Material& material)

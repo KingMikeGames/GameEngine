@@ -153,6 +153,7 @@
     <ClInclude Include="OBJ_Loader.h" />
     <ClInclude Include="ReferenceCounter.h" />
     <ClInclude Include="RenderingEngine.h" />
+    <ClInclude Include="RenderUtil.h" />
     <ClInclude Include="ResourceLoader.h" />
     <ClInclude Include="sdl_backend.h" />
     <ClInclude Include="Shader.h" />
@@ -175,6 +176,7 @@
     <ClCompile Include="MeshRenderer.cpp" />
     <ClCompile Include="OBJ_Loader.cpp" />
     <ClCompile Include="RenderingEngine.cpp" />
+    <ClCompile Include="RenderUtil.cpp" />
     <ClCompile Include="ResourceLoader.cpp" />
     <ClCompile Include="sdl_backend.cpp" />
     <ClCompile Include="Shader.cpp" />

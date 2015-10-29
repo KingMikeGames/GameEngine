@@ -49,7 +49,6 @@ void Game::init()
 	m_mesh = new Mesh("res/models/cube.obj");
 
 	//ResourceLoader::loadMesh("cube.obj", m_mesh);
-	m_shader = new BasicShader;
 	m_texture = Texture("small.png");
 	m_material = Material(&m_texture, glm::vec3(1.0f, 1.0f, 1.0f));
 

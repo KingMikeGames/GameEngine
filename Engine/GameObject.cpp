@@ -1,5 +1,5 @@
-#include "GameObject.h"
 
+#include "GameObject.h"
 
 void GameObject::AddChild(GameObject& child)
 {
