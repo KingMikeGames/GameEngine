@@ -68,6 +68,9 @@
     <ClInclude Include="CoreEngine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GameComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="sdl_backend.cpp">
