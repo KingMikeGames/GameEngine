@@ -5,15 +5,25 @@
 #include "Camera.h"
 #include "Texture.h"
 #include "Material.h"
+#include "GameObject.h"
+
 class Game
 {
 public:
 	Game();
-	~Game();
+	virtual ~Game();
+
+	void init();
 	void input();
 	void update();
 	void render();
 private:
+	Game(Game& game) {}
+	void operator=(Game& game) {}
+
+	GameObject m_root;
+
+
 	Mesh m_mesh;
 	Shader* m_shader;
 	Texture m_texture;

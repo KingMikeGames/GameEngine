@@ -3,8 +3,8 @@
 #include <iostream>
 Mesh::Mesh()
 {
-	glGenBuffers(1, &m_vbo);
-	glGenBuffers(1, &m_ibo);
+	m_vbo = 0;
+	m_ibo = 0;
 	m_size = 0;
 }
 
@@ -16,6 +16,8 @@ Mesh::~Mesh()
 
 void Mesh::addVertices(Vertex* vertices, int vertsize, int* indices, int indexSize)
 {
+	if (!m_vbo) glGenBuffers(1, &m_vbo);
+	if (!m_ibo) glGenBuffers(1, &m_ibo);
 	m_size = indexSize; //che che check it baby
 
 	glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
