@@ -11,7 +11,7 @@ class GameComponent
 public:
 	virtual ~GameComponent() {}
 
-	virtual void Input(const Transform& transform) {}
-	virtual void Update(const Transform& transform) {}
+	virtual void Input(const Transform& transform, float delta) {}
+	virtual void Update(const Transform& transform, float delta) {}
 	virtual void Render(const Transform& transform, Shader* shader, RenderingEngine* renderingEngine) {}
 };

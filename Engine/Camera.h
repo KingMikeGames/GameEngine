@@ -7,7 +7,7 @@ class Camera
 public:
 	Camera(float fov, float aspect, float zNear, float zFar);
 
-	void input();
+	void input(float delta);
 	void move(const glm::vec3& direction, float amt);
 	void rotateY(float angle);
 	void rotateX(float angle);

@@ -15,11 +15,11 @@ Camera::Camera(float fov, float aspect, float zNear, float zFar) :
 	m_projection = glm::perspective(fov, aspect, zNear, zFar);
 }
 
-void Camera::input()
+void Camera::input(float delta)
 {
 	float sensitivity = 0.005f;
-	float moveAmount = float(5.0f * Time::getDelta());
-	float rotationAmount = (float)(Time::getDelta());
+	float moveAmount = (float)(5.0f * delta);
+	float rotationAmount = (float)(delta);
 
 	if (Input::getKey(KEY::KEY_ESCAPE))
 	{

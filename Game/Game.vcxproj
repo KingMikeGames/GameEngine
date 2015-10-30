@@ -20,10 +20,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="TestGame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\basicFragment.fs" />
     <None Include="res\shaders\basicVertex.vs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TestGame.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{D4EC6D5A-1433-4FEB-B651-819A5E036EEC}</ProjectGuid>

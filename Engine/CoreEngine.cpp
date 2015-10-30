@@ -48,7 +48,7 @@ void CoreEngine::Run()
 {
 	m_isRunning = true;
 
-	m_game->init();
+	m_game->Init();
 
 	double lastTime = Time::getTime();
 	double unprocessedTime = 0;
@@ -82,20 +82,18 @@ void CoreEngine::Run()
 				stop();
 			}
 				
-
-			Time::setDelta(m_frameTime);
 			Input::update();
 
-			m_game->input();
-			m_renderingEngine->Input();
-			m_game->update();
+			m_game->Input(m_frameTime);
+			m_renderingEngine->Input(m_frameTime);
+			m_game->Update(m_frameTime);
 
 			unprocessedTime -= m_frameTime;
 		}
 
 		if (render || IGNORE_FRAME_CAP)
 		{
-			m_renderingEngine->Render(&m_game->getRoot());
+			m_renderingEngine->Render(&m_game->GetRoot());
 			Window::render();
 			frames++;
 		}
