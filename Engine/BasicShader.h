@@ -14,7 +14,7 @@ public:
 		return &instance;
 	}
 
-	virtual void updateUniforms(const glm::mat4& worldMatrix, const glm::mat4& projectedMatrix, Material& material) override;
+	virtual void UpdateUniforms(const Transform& transform, const Material& material, RenderingEngine* renderingEngine);
 
 protected:
 private:

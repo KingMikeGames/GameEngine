@@ -23,6 +23,9 @@ public:
 	// Get window height
 	static int getHeight();
 
+	//return heigh / width
+	static float GetAspect();
+
 	// Get window title
 	static const std::string& getTitle();
 

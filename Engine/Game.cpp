@@ -52,21 +52,24 @@ void Game::init()
 	m_texture = Texture("small.png");
 	m_material = Material(&m_texture, glm::vec3(1.0f, 1.0f, 1.0f));
 
-	m_transform.setProjection(45.0f, (float)Window::getWidth(), (float)Window::getHeight(), 0.1f, 100.0f);
-	m_transform.setCamera(m_camera);
-
 	m_meshRenderer = new MeshRenderer(*m_mesh, m_material);
 	m_root.AddComponent(m_meshRenderer);
+
+	m_cube0.AddComponent(m_meshRenderer);
+	m_cube0.GetTransform().setTranslation(glm::vec3(0, 1, 0));
+
+	
 }
 
 Game::~Game()
 {
-	
+	//if (m_texture) delete m_texture;
+	if (m_mesh) delete m_mesh;
+	if (m_meshRenderer) delete m_meshRenderer;
 }
 
 void Game::input()
 {
-	m_camera.input();
 	m_root.Input();
 }
 
@@ -74,5 +77,7 @@ void Game::update()
 {
 	temp += (float)Time::getDelta();
 	m_root.GetTransform().setRotation(glm::angleAxis(temp, glm::vec3(0, 1, 0)));
+	//m_root.GetTransform().setTranslation(glm::vec3(0, 0, 0));
+	m_root.GetTransform().setScale(glm::vec3(1.0f,1.0f,1.0f));
 	m_root.Update();
 }

@@ -4,6 +4,8 @@
 #include <string>
 #include <glm\glm.hpp>
 #include "Material.h"
+#include "RenderingEngine.h"
+#include "Transform.h"
 
 class Shader
 {
@@ -24,7 +26,7 @@ public:
 	void compileShader();
 	void bind();
 
-	virtual void updateUniforms(const glm::mat4& worldMatrix, const glm::mat4& projectedMatrix, Material& material);
+	virtual void UpdateUniforms(const Transform& transform, const Material& material, RenderingEngine* renderingEngine);
 
 private:
 	void addProgram(const std::string& text, int type);

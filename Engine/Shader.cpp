@@ -31,7 +31,7 @@ void Shader::bind()
 	glUseProgram(m_program);
 }
 
-void Shader::updateUniforms(const glm::mat4& worldMatrix, const glm::mat4& projectedMatrix, Material& material)
+void Shader::UpdateUniforms(const Transform& transform, const Material& material, RenderingEngine* renderingEngine)
 {
 
 }

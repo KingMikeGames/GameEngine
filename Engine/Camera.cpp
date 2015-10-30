@@ -3,18 +3,16 @@
 #include "Time.h"
 #include "Window.h"
 #include <glm\gtx\quaternion.hpp>
+#include <glm\gtx\transform.hpp>
+#include <iostream>
 bool mouseLocked = false;
 
-Camera::Camera(glm::vec3 pos, glm::vec3 forward, glm::vec3 up) :
-	m_pos(pos),
-	m_forward(forward),
-	m_up(up)
+Camera::Camera(float fov, float aspect, float zNear, float zFar) :
+	m_pos(glm::vec3(0, 0, 5)),
+	m_forward(glm::vec3(0, 0, -1)),
+	m_up(glm::vec3(0, 1, 0))
 {
-
-}
-
-Camera::~Camera()
-{
+	m_projection = glm::perspective(fov, aspect, zNear, zFar);
 }
 
 void Camera::input()
@@ -77,6 +75,11 @@ void Camera::input()
 		move(getRight(), -moveAmount);
 	}
 
+}
+
+glm::mat4 Camera::GetViewProjection() const
+{
+	return m_projection * glm::lookAt(m_pos, m_pos + m_forward, m_up);
 }
 
 void Camera::move(const glm::vec3 & direction, float amt)

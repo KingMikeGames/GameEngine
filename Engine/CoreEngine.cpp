@@ -85,7 +85,9 @@ void CoreEngine::Run()
 
 			Time::setDelta(m_frameTime);
 			Input::update();
+
 			m_game->input();
+			m_renderingEngine->Input();
 			m_game->update();
 
 			unprocessedTime -= m_frameTime;

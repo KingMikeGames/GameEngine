@@ -1,11 +1,13 @@
-
 #include "renderingEngine.h"
 #include "basicShader.h"
+#include "window.h"
+#include "gameObject.h"
 #include <GL/glew.h>
 
-RenderingEngine::RenderingEngine()
+RenderingEngine::RenderingEngine() :
+	m_mainCamera(glm::radians(70.0f), Window::GetAspect(), 0.01f, 1000.0f)
 {
-	glClearColor(0.5f, 0.2f, 0.5f, 0.0f);
+	glClearColor(0.5f, 1.0f, 0.5f, 1.0f);
 
 	//glFrontFace(GL_CW);
 	glCullFace(GL_BACK);
@@ -19,8 +21,14 @@ RenderingEngine::~RenderingEngine()
 	//dtor
 }
 
+void RenderingEngine::Input()
+{
+	m_mainCamera.input();
+}
+
 void RenderingEngine::Render(GameObject* object)
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	object->Render(BasicShader::getInstance());
+
+	object->Render(BasicShader::getInstance(), this);
 }

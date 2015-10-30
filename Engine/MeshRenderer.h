@@ -11,10 +11,10 @@ public:
 		m_material = &material;
 	}
 
-	virtual void Render(const Transform& transform, Shader* shader)
+	virtual void Render(const Transform& transform, Shader* shader, RenderingEngine* renderingEngine)
 	{
 		shader->bind();
-		shader->updateUniforms(transform.getTransformation(), transform.getProjectedTransformation(), *m_material);
+		shader->UpdateUniforms(transform, *m_material, renderingEngine);
 		m_mesh->draw();
 	}
 protected:
