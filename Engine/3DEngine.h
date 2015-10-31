@@ -1,3 +1,5 @@
+// Just a list of includes to make including all this stuff easier to read
+
 #include "mesh.h"
 #include "shader.h"
 #include "basicShader.h"

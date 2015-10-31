@@ -103,7 +103,7 @@ void Camera::rotateX(float angle)
 	m_up = glm::normalize(glm::cross(m_forward, hAxis));
 }
 
-glm::vec3 & Camera::getPos()
+glm::vec3 & Camera::getPosition()
 {
 	return m_pos;
 }
@@ -128,7 +128,7 @@ glm::vec3 Camera::getRight() const
 	return glm::normalize(glm::cross(m_up, m_forward));
 }
 
-void Camera::setPos(const glm::vec3 & pos)
+void Camera::setPosition(const glm::vec3 & pos)
 {
 	m_pos = pos;
 }

@@ -7,9 +7,6 @@
 #define SAFE_DELETE(p) if(p) {delete p; p = NULL;}
 #define INVALID_VALUE 0xFFFFFFFF
 
-#define ToRadian(x) (float)(((x) * 3.1415926536f / 180.0f))
-#define ToDegree(x) (float)(((x) * 180.0f / 3.1415926536f))
-
 namespace Util {
 	void sleep(int milliseconds);
 };

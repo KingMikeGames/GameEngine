@@ -8,11 +8,11 @@ void TestGame::Init()
 
 	m_meshRenderer = new MeshRenderer(*m_mesh, m_material);
 	m_cube.AddComponent(m_meshRenderer);
-	m_cube.GetTransform().setTranslation(glm::vec3(-1.5, 0, 3));
+	m_cube.GetTransform().setPosition(glm::vec3(-1.5, 0, 3));
 	m_cube.GetTransform().setScale(glm::vec3(1.0,1.0,1.0));
 
 	m_cube1.AddComponent(m_meshRenderer);
-	m_cube1.GetTransform().setTranslation(glm::vec3(1.5, -0, 3));
+	m_cube1.GetTransform().setPosition(glm::vec3(1.5, -0, 3));
 	m_cube1.GetTransform().setScale(glm::vec3(1.0, 1.0, 1.0));
 	
 	AddToScene(m_cube);
