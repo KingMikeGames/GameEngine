@@ -1,14 +1,15 @@
 #pragma once
 
 #include "vertex.h"
-#include "ReferenceCounter.h"
 #include <string>
 #include <map>
+#include <vector>
+#include <memory>
 
 /*
 holds mesh data so it can be passed to abstract renderers
 */
-class MeshData : public ReferenceCounter
+class MeshData
 {
 public:
 	/*
@@ -34,8 +35,6 @@ public:
 	inline int GetSize() { return m_size; }
 protected:
 private:
-	MeshData(MeshData& other) {}
-	void operator=(MeshData& other) {}
 
 	/*
 	vertex buffer object
@@ -79,13 +78,14 @@ public:
 	/*
 	called by the render to draw the mesh
 	*/
-	void Draw() const;
+	void Draw(int index) const;
+	int numParts() { return m_meshData.size(); }
 protected:
 private:
 	/*
 	holds all meshes currently loaded into memory
 	*/
-	static std::map<std::string, MeshData*> s_resourceMap;
+	static std::map<std::string, std::vector<std::shared_ptr<MeshData>>> s_resourceMap;
 
 	Mesh(Mesh& mesh) {}
 	void operator=(Mesh& mesh) {}
@@ -117,5 +117,6 @@ private:
 	/*
 	vertex and index data
 	*/
-	MeshData* m_meshData;
+
+	std::vector<std::shared_ptr<MeshData>> m_meshData;
 };
