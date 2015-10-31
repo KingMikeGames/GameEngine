@@ -1,5 +1,5 @@
 #include <engine\3DEngine.h>
-
+#include <vector>
 class TestGame : public Game
 {
 public:
@@ -14,10 +14,9 @@ private:
 	void operator=(const TestGame& other) {}
 
 	GameObject m_cube;
-	GameObject m_cube1;
 
 	Mesh* m_mesh;
-	Material m_material;
+	std::vector<Material> mats;
 	Texture* m_texture;
 	MeshRenderer* m_meshRenderer;
 };
