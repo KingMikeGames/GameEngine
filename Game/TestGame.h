@@ -15,9 +15,8 @@ private:
 
 	GameObject m_cube;
 	GameObject m_cube1;
+	std::vector<Material> mats;
 
 	Mesh* m_mesh;
-	Material m_material;
-	Texture* m_texture;
 	MeshRenderer* m_meshRenderer;
 };
