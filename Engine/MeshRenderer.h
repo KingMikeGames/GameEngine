@@ -15,7 +15,7 @@ public:
 	{
 		shader->bind();
 		shader->UpdateUniforms(transform, *m_material, renderingEngine);
-		m_mesh->draw();
+		m_mesh->Draw();
 	}
 protected:
 private:
