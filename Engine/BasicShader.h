@@ -4,9 +4,13 @@
 #include <glm\glm.hpp>
 #include "Util.h"
 
+/*
+* BasicShader is a default unlit shader program to be used
+*/
 class BasicShader : public Shader
 {
 public:
+
 
 	static BasicShader* getInstance()
 	{

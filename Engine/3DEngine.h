@@ -1,3 +1,4 @@
+//include everything so we only need to include 3DEngine.h
 #include "mesh.h"
 #include "shader.h"
 #include "basicShader.h"

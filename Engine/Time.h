@@ -6,12 +6,22 @@ class Time
 {
 public:
 
-	// return system time
+	/*
+	* Returns elapsed time from the start
+	* @return Elapsed time
+	*/
 	static double getTime();
 
-	// get time that passes between frames
+	/*
+	* Returns time between frames
+	* @return Time between frames
+	*/
 	static double getDelta();
 
+	/*
+	* Sets the time since last frame
+	* @param value Time since last frame
+	*/
 	static void setDelta(double value);
 protected:
 private:

@@ -24,7 +24,7 @@ void BasicShader::UpdateUniforms(const Transform& transform, const Material& mat
 	else
 		WHITE.bind();
 
-	glm::mat4 worldMatrix = transform.getTransformation();
+	glm::mat4 worldMatrix = transform.getTransform();
 	glm::mat4 projectedMatrix = renderingEngine->GetMainCamera().GetViewProjection() * worldMatrix;
 
 	setUniform("transform", projectedMatrix);
