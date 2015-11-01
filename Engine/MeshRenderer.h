@@ -2,6 +2,7 @@
 #include "mesh.h"
 #include "basicShader.h"
 #include <vector>
+#include <iostream>
 /*
 The MeshRenderer is a component that renders meshes
 */
@@ -18,6 +19,16 @@ public:
 		m_mesh = &mesh;
 		m_materials = materials;
 		partsToRender = m_mesh->numParts();
+		if (m_materials.size() < partsToRender)
+		{
+			static Texture texture = Texture("default.png");
+			int x = partsToRender - m_materials.size();
+			std::cout << "Not enough textures " << x << " more needed." << std::endl;
+			for (unsigned i = 0; i < x; i++)
+			{
+				m_materials.emplace_back(&texture,glm::vec3(1.0f,1.0f,1.0f));
+			}
+		}
 	}
 
 	/*
@@ -31,7 +42,10 @@ public:
 		shader->bind();
 		for (int i = 0; i < partsToRender; i++)
 		{
-			shader->UpdateUniforms(transform, m_materials[i], renderingEngine);
+			if (&m_materials[i])
+			{
+				shader->UpdateUniforms(transform, m_materials[i], renderingEngine);
+			}
 			m_mesh->Draw(i);
 		}
 		

@@ -12,8 +12,8 @@ void TestGame::Init()
 	m_meshRenderer = new MeshRenderer(*m_mesh, mats);
 
 	m_cube.AddComponent(m_meshRenderer);
-	m_cube.GetTransform().setPosition(glm::vec3(-1.5, 0, 3));
-	m_cube.GetTransform().setScale(glm::vec3(0.2f,0.2f,0.2f));
+	m_cube.GetTransform().setPosition(glm::vec3(0, 0, 3));
+	m_cube.GetTransform().setScale(glm::vec3(1.0f,1.0f,1.0f));
 	
 	AddToScene(m_cube);
 	//AddToScene(m_cube1);
