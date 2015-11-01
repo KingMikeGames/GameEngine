@@ -2,13 +2,10 @@
 #include <vector>
 void TestGame::Init()
 {
-	m_mesh = new Mesh("./res/models/neptune.obj");
+	m_mesh = new Mesh("./res/models/crate.obj");
 
 	
-	mats.emplace_back(new Texture("neptune/1.jpg"), glm::vec3(1.0f, 1.0f, 1.0f));
-	mats.emplace_back(new Texture("neptune/2.jpg"), glm::vec3(1.0f, 1.0f, 1.0f));
-	mats.emplace_back(new Texture("neptune/4.jpg"), glm::vec3(1.0f, 1.0f, 1.0f));
-	mats.emplace_back(new Texture("neptune/5.jpg"), glm::vec3(1.0f, 1.0f, 1.0f));
+	mats.emplace_back(new Texture("crate.jpg"), glm::vec3(1.0f, 1.0f, 1.0f));
 	m_meshRenderer = new MeshRenderer(*m_mesh, mats);
 
 	m_cube.AddComponent(m_meshRenderer);
