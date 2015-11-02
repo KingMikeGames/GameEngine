@@ -60,7 +60,7 @@ public:
 	glm::quat getRotation() { return m_rotation; }
 private:
 	/* Position of object */
-	glm::vec3 m_position = glm::vec3(0.0f,0.0f,0.0f);
+	glm::vec3 m_position = glm::vec3(0.0f,0.0f,10.0f);
 	/* Rotation of object */
 	glm::quat m_rotation = glm::quat(0.0f, 0.0f, 0.0f, 1.0f);
 	/* Scale of object */

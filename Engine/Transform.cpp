@@ -4,9 +4,6 @@
 #include <glm\gtx\transform.hpp>
 #include <iostream>
 
-
-
-
 Transform::Transform(glm::vec3 pos, glm::quat rot, glm::vec3 scale) :
 	m_position(pos),
 	m_rotation(rot),

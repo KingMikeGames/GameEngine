@@ -1,4 +1,4 @@
-#include "CoreEngine.h"
+#include "Engine.h"
 #include "Time.h"
 #include "Window.h"
 #include "Input.h"
@@ -8,7 +8,7 @@
 
 bool IGNORE_FRAME_CAP = false;
 
-CoreEngine::CoreEngine(int width, int height, double frameRate, Game * game) :
+Engine::Engine(int width, int height, double frameRate, Game * game) :
 	m_isRunning(false),
 	m_width(width),
 	m_height(height),
@@ -16,19 +16,19 @@ CoreEngine::CoreEngine(int width, int height, double frameRate, Game * game) :
 	m_game(game),
 	m_renderingEngine(nullptr) {}
 
-CoreEngine::~CoreEngine()
+Engine::~Engine()
 {
 	Window::dispose();
 	delete m_renderingEngine;
 }
 
-void CoreEngine::createWindow(const std::string & title)
+void Engine::createWindow(const std::string & title)
 {
 	Window::create(m_width, m_height, title);
 	m_renderingEngine = new RenderingEngine();
 }
 
-void CoreEngine::start()
+void Engine::start()
 {
 	if (m_isRunning)
 		return;
@@ -36,7 +36,7 @@ void CoreEngine::start()
 	Run();
 }
 
-void CoreEngine::stop()
+void Engine::stop()
 {
 	if (!m_isRunning)
 		return;
@@ -44,7 +44,7 @@ void CoreEngine::stop()
 	m_isRunning = false;
 }
 
-void CoreEngine::Run()
+void Engine::Run()
 {
 	m_isRunning = true;
 

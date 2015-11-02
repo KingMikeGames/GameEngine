@@ -5,9 +5,9 @@
 #include "RenderingEngine.h"
 
 /*
-* The CoreEngine class initializes the game engine, creates the window and runs the game loop
+* The Engine class initializes the game engine, creates the window and runs the game loop
 */
-class CoreEngine
+class Engine
 {
 public:
 
@@ -17,8 +17,8 @@ public:
 	* @param frameRate Desired framerate of the game
 	* @param game The game you're running
 	*/
-	CoreEngine(int width, int height, double frameRate, Game* game);
-	virtual ~CoreEngine();
+	Engine(int width, int height, double frameRate, Game* game);
+	virtual ~Engine();
 
 	/*
 	* Creates window with desired dimensions
@@ -38,8 +38,8 @@ public:
 
 private:
 
-	CoreEngine(const CoreEngine& other) {}
-	void operator=(const CoreEngine& other) {}
+	Engine(const Engine& other) {}
+	void operator=(const Engine& other) {}
 
 	/*
 	* Runs the game loop

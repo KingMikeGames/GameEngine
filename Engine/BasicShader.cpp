@@ -9,7 +9,7 @@ BasicShader::BasicShader()
 	compileShader();
 
 	addUniform("transform");
-	addUniform("color");
+	//addUniform("color");
 	//addUniform("sampler2D");
 }
 
@@ -28,5 +28,5 @@ void BasicShader::UpdateUniforms(const Transform& transform, const Material& mat
 	glm::mat4 projectedMatrix = renderingEngine->GetMainCamera().GetViewProjection() * worldMatrix;
 
 	setUniform("transform", projectedMatrix);
-	setUniform("color", material.color);
+	//setUniform("color", material.color);
 }

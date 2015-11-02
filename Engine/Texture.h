@@ -33,6 +33,7 @@ public:
 	* @param Texture unit to make active
 	*/
 	void bind(GLenum textureUnit = GL_TEXTURE0);
+	Texture() { m_freeTexture = false; };
 	Texture(Texture& texture);
 	void operator= (Texture& texture);
 private:

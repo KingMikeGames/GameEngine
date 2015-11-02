@@ -17,8 +17,9 @@ Camera::Camera(float fov, float aspect, float zNear, float zFar) :
 
 void Camera::input(float delta)
 {
-	float sensitivity = 0.005f;
 	float moveAmount = (float)(5.0f * delta);
+	/*
+	float sensitivity = 0.005f;
 	float rotationAmount = (float)(delta);
 
 	if (Input::getKey(KEY::KEY_ESCAPE))
@@ -57,6 +58,7 @@ void Camera::input(float delta)
 		Input::setCursor(false);
 		mouseLocked = true;
 	}
+	*/
 
 	if (Input::getKey(KEY::KEY_W))
 	{
