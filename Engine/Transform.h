@@ -23,6 +23,25 @@ public:
 	*/
 	glm::mat4 getTransform() const;
 
+	void setTransform(glm::vec3 pos, glm::quat rot, glm::vec3 scale);
+
+	/*
+	* Returns transform of the parent object
+	* @return Transform of parent object
+	*/
+	glm::mat4 getParentTransform() const;
+
+	void setParent(Transform& parent) 
+	{
+		m_parent = &parent; 
+		m_parentMatrix = m_parent->getTransform();
+	}
+
+	void setParentTransform()
+	{
+		m_parentMatrix = m_parent->getTransform();
+	}
+
 	/*
 	* Sets position of object
 	* @param trans New position of object
@@ -58,6 +77,8 @@ public:
 	* @return Rotation of object
 	*/
 	glm::quat getRotation() { return m_rotation; }
+
+	bool hasChanged();
 private:
 	/* Position of object */
 	glm::vec3 m_position = glm::vec3(0.0f,0.0f,10.0f);
@@ -65,4 +86,14 @@ private:
 	glm::quat m_rotation = glm::quat(0.0f, 0.0f, 0.0f, 1.0f);
 	/* Scale of object */
 	glm::vec3 m_scale = glm::vec3(1.0f, 1.0f, 1.0f);
+
+	/* Position of object */
+	glm::vec3 m_oldPosition = glm::vec3(0.0f, 0.0f, 10.0f);
+	/* Rotation of object */
+	glm::quat m_oldRotation = glm::quat(0.0f, 0.0f, 0.0f, 1.0f);
+	/* Scale of object */
+	glm::vec3 m_oldScale = glm::vec3(1.0f, 1.0f, 1.0f);
+
+	glm::mat4 m_parentMatrix = glm::mat4();
+	Transform* m_parent;
 };

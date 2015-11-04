@@ -87,6 +87,7 @@ void Engine::Run()
 			m_game->Input(m_frameTime);
 			m_renderingEngine->Input(m_frameTime);
 			m_game->Update(m_frameTime);
+			m_game->GetRoot().Update(m_frameTime);
 
 			unprocessedTime -= m_frameTime;
 		}

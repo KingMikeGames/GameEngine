@@ -3,6 +3,7 @@
 void GameObject::AddChild(GameObject& child)
 {
 	m_children.push_back(&child);
+	child.GetTransform().setParent(this->GetTransform());
 }
 
 void GameObject::AddComponent(GameComponent* component)
@@ -25,7 +26,13 @@ void GameObject::Update(float delta)
 		m_components[i]->Update(m_transform, delta);
 
 	for (unsigned int i = 0; i < m_children.size(); i++)
+	{
+		if (GetTransform().hasChanged())
+		{
+			m_children[i]->GetTransform().setParentTransform();
+		}
 		m_children[i]->Update(delta);
+	}
 }
 
 void GameObject::Render(Shader* shader, RenderingEngine* renderingEngine)
