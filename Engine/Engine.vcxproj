@@ -140,6 +140,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AbstractRenderer.h" />
     <ClInclude Include="BasicShader.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Engine.h" />
@@ -164,6 +165,7 @@
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AbstractRenderer.cpp" />
     <ClCompile Include="BasicShader.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Engine.cpp" />

@@ -1,6 +1,6 @@
 #include "renderingEngine.h"
 #include "basicShader.h"
-#include "window.h"
+#include "Window.h"
 #include "gameObject.h"
 #include <GL/glew.h>
 
