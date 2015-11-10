@@ -31,7 +31,7 @@ void Shader::bind()
 	glUseProgram(m_program);
 }
 
-void Shader::UpdateUniforms(const Transform& transform, const Material& material, RenderingEngine* renderingEngine)
+void Shader::UpdateUniforms(const Transform& transform, const Material& material, AbstractRenderer* renderingEngine)
 {
 
 }

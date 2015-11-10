@@ -18,7 +18,7 @@ public:
 		return &instance;
 	}
 
-	virtual void UpdateUniforms(const Transform& transform, const Material& material, RenderingEngine* renderingEngine);
+	virtual void UpdateUniforms(const Transform& transform, const Material& material, AbstractRenderer* renderingEngine);
 
 protected:
 private:

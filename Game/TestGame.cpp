@@ -3,9 +3,9 @@
 
 void TestGame::Init()
 {
-	/*
+	
 
-	MANUAL CUBE
+	//MANUAL CUBE
 
 	 Vertex vertices[8] = {
 		Vertex(glm::vec3(-0.5, -0.5, 0.5), glm::vec2(0,0), glm::vec3(0,0,0), glm::vec4(1,0,0,1)),
@@ -26,9 +26,9 @@ void TestGame::Init()
 		2,5,3,5,7,1,
 		4,3,7,3,0,7
 	};
-	*/
+	
 
-	m_mesh = new Mesh("res/models/crate.obj");
+	m_mesh = new Mesh(vertices, 8, indices, 36, false);
 	m_texture = new Texture("animu_tex.jpg"); 
 	m_texture1 = new Texture("crate_tex.jpg");
 	m_material = Material(m_texture, glm::vec3(1, 1, 1));
@@ -43,7 +43,6 @@ void TestGame::Init()
 	
 	m_cube1.AddComponent(m_meshRenderer1);
 	m_cube1.GetTransform().setPosition(glm::vec3(1, 1, 0));
-	m_cube1.GetTransform().setRotation(glm::angleAxis(45.f, glm::vec3(0, 1, 0)));
 	
 	m_cube.AddChild(m_cube1);
 
@@ -55,6 +54,7 @@ void TestGame::Update(float delta)
 	static float temp = 0;
 	temp += delta;
 	m_cube.GetTransform().setRotation(glm::angleAxis(temp, glm::vec3(0, 1, 0)));
+	m_cube1.GetTransform().setRotation(glm::angleAxis(temp * 2, glm::vec3(0, 1, 0)));
 }
 
 TestGame::~TestGame()

@@ -9,13 +9,13 @@ BasicShader::BasicShader()
 	compileShader();
 
 	addUniform("transform");
-	addUniform("color");
+	//addUniform("color");
 	//addUniform("sampler2D");
 }
 
 static unsigned char whitePixel[] = { 0xFF, 0xFF, 0xFF, 0xFF };
 
-void BasicShader::UpdateUniforms(const Transform& transform, const Material& material, RenderingEngine* renderingEngine)
+void BasicShader::UpdateUniforms(const Transform& transform, const Material& material, AbstractRenderer* renderingEngine)
 {
 	static Texture WHITE = Texture(1, 1, whitePixel);
 
@@ -28,5 +28,5 @@ void BasicShader::UpdateUniforms(const Transform& transform, const Material& mat
 	glm::mat4 projectedMatrix = renderingEngine->GetMainCamera().GetViewProjection() * worldMatrix;
 
 	setUniform("transform", projectedMatrix);
-	setUniform("color", material.color);
+	//setUniform("color", material.color);
 }

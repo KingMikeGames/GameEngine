@@ -5,7 +5,7 @@
 class GameObject;
 
 /* 
-* This is the current renderer that uses OpenGL and is totally not abstract at all
+* This is the current OpenGL Renderer
 */
 class RenderingEngine : public AbstractRenderer
 {

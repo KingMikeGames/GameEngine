@@ -34,5 +34,5 @@ public:
 	* @param shader Shader program being used to render
 	* @param renderingEngine The renderer
 	*/
-	virtual void Render(const Transform& transform, Shader* shader, RenderingEngine* renderingEngine) {}
+	virtual void Render(const Transform& transform, Shader* shader, AbstractRenderer* renderingEngine) {}
 };

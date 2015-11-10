@@ -25,7 +25,7 @@ public:
 	* @param shader Shader program to be used for rendering
 	* @param renderingEngine The renderer
 	*/
-	virtual void Render(const Transform& transform, Shader* shader, RenderingEngine* renderingEngine)
+	virtual void Render(const Transform& transform, Shader* shader, AbstractRenderer* renderingEngine)
 	{
 		shader->bind();
 		shader->UpdateUniforms(transform, *m_material, renderingEngine);
