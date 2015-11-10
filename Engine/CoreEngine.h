@@ -3,7 +3,7 @@
 #include "Game.h"
 #include <string>
 #include "RenderingEngine.h"
-
+#include "AbstractRenderer.h"
 /*
 Initializes the engine 
 creates the window
@@ -68,6 +68,6 @@ private:
 	Game* m_game;
 
 	// the abstract render used for opengl
-	RenderingEngine* m_renderingEngine;
+	AbstractRenderer* m_renderingEngine;
 };
 

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "camera.h"
+#include "AbstractRenderer.h"
 class GameObject;
 
 
@@ -8,7 +9,7 @@ class GameObject;
 This is the abstract renderer currently set up to use opengl
 This draws all things in the engine
 */
-class RenderingEngine
+class RenderingEngine : public AbstractRenderer
 {
 public:
 	/*

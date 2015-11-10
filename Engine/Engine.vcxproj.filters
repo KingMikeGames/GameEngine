@@ -77,6 +77,9 @@
     <ClInclude Include="3DEngine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AbstractRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="sdl_backend.cpp">
