@@ -8,7 +8,7 @@
 bool mouseLocked = false;
 
 Camera::Camera(float fov, float aspect, float zNear, float zFar) :
-	m_pos(glm::vec3(0, 0, 0)),
+	m_pos(glm::vec3(8, 0, 3)),
 	m_forward(glm::vec3(0, 0, 1)),
 	m_up(glm::vec3(0, 1, 0))
 {

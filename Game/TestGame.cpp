@@ -73,13 +73,17 @@ void TestGame::Update(float delta)
 		switch (dir)
 		{
 		case 0:
-			break;
+			if (maze[(position[0] + 1) % 10][position[1]] != 0 || maze[(position[0] + 1) % 10][position[1]] != 3)
+				break;
 		case 1:
-			break;
+			if (maze[(position[0])][(position[1] + 1) % 10] != 0 || maze[position[0]][(position[1] + 1) % 10] != 3)
+				break;
 		case 2:
-			break;
+			if (maze[(position[0] + 9) % 10][position[1]] != 0 || maze[(position[0] + 9) % 10][position[1]] != 3)
+				break;
 		case 3:
-			break;
+			if (maze[(position[0])][(position[1] + 9) % 10] != 0 || maze[position[0]][(position[1] + 9) % 10] != 3)
+				break;
 		default:
 			break;
 		}
@@ -89,16 +93,16 @@ void TestGame::Update(float delta)
 		switch (dir)
 		{
 		case 0:
-			if (maze[(position[0] + 1) % 10][position[1]] != 0 || maze[(position[0] + 1) % 10][position[1]] != 3)
-			break;
-		case 1:
-			if (maze[(position[0])][(position[1] + 1) % 10] != 0 || maze[position[0]][(position[1] + 1) % 10] != 3)
-			break;
-		case 2:
 			if (maze[(position[0] + 9) % 10][position[1]] != 0 || maze[(position[0] + 9) % 10][position[1]] != 3)
 			break;
-		case 3:
+		case 1:
 			if (maze[(position[0])][(position[1] + 9) % 10] != 0 || maze[position[0]][(position[1] + 9) % 10] != 3)
+			break;
+		case 2:
+			if (maze[(position[0] + 1) % 10][position[1]] != 0 || maze[(position[0] + 1) % 10][position[1]] != 3)
+			break;
+		case 3:
+			if (maze[(position[0])][(position[1] + 1) % 10] != 0 || maze[position[0]][(position[1] + 1) % 10] != 3)
 			break;
 		default:
 			break;
