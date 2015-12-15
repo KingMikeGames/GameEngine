@@ -4,9 +4,9 @@
 #include <string>
 #include <glm\glm.hpp>
 #include "Material.h"
-#include "RenderingEngine.h"
 #include "Transform.h"
 
+class RenderingEngine;
 /*
 * The Shader class contains all functions necessary to set up a shader program to be used for rendering
 */

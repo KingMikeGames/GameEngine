@@ -2,6 +2,8 @@
 
 #include "AbstractRenderer.h"
 #include "camera.h"
+#include "Lighting.h"
+#include <vector>
 class GameObject;
 
 /* 
@@ -39,6 +41,8 @@ public:
 	*/
 	inline void SetMainCamera(const Camera& camera) { m_mainCamera = camera; }
 
+	inline void AddLight(BaseLight& light) { m_lights.push_back(&light); }
+
 	virtual ~RenderingEngine();
 protected:
 private:
@@ -46,4 +50,6 @@ private:
 
 	/* The camera currently viewing the rendered scene */
 	Camera m_mainCamera;
+
+	std::vector<BaseLight*> m_lights;
 };

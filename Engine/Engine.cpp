@@ -48,6 +48,7 @@ void Engine::Run()
 {
 	m_isRunning = true;
 
+
 	m_game->Init();
 
 	double lastTime = Time::getTime();

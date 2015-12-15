@@ -5,6 +5,7 @@
 
 class RenderingEngine;
 class Shader;
+class GameObject;
 
 /*
 * Components of a Game Object with their own logic in the game's Update loop
@@ -12,6 +13,8 @@ class Shader;
 class GameComponent
 {
 public:
+	GameComponent() :
+		m_parent(0) {}
 	virtual ~GameComponent() {}
 
 	/*
@@ -35,4 +38,12 @@ public:
 	* @param renderingEngine The renderer
 	*/
 	virtual void Render(const Transform& transform, Shader* shader, RenderingEngine* renderingEngine) {}
+
+	virtual void SetParent(GameObject* parent);
+	GameObject* GetParent();
+private:
+	GameObject* m_parent;
+
+	GameComponent(const GameComponent& other) {}
+	void operator=(const GameComponent& other) {}
 };

@@ -47,6 +47,8 @@ public:
 	* @return Transform of the GameObject
 	*/
 	inline Transform& GetTransform() { return m_transform; }
+
+	inline std::vector<GameComponent*> GetComponents() { return m_components; }
 protected:
 private:
 	/* Vector list of all children of the GameObject */

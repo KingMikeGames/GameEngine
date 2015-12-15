@@ -7,7 +7,7 @@
 RenderingEngine::RenderingEngine() :
 	m_mainCamera(glm::radians(70.0f), Window::GetAspect(), 0.01f, 1000.0f)
 {
-	glClearColor(1.f, .7f, 1.f, 1.f);
+	glClearColor(0.f, 0.f, 0.f, 1.f);
 
 	//glFrontFace(GL_CW);
 	glCullFace(GL_BACK);

@@ -78,6 +78,8 @@ public:
 	*/
 	glm::quat getRotation() { return m_rotation; }
 
+	glm::vec3 getForward() { return m_rotation * glm::vec3(0, 0, 1) * glm::conjugate(m_rotation); }
+
 	bool hasChanged();
 private:
 	/* Position of object */

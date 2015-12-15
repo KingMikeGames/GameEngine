@@ -36,6 +36,8 @@ public:
 	*/
 	void stop();
 
+	RenderingEngine* GetRenderingEngine() { return m_renderingEngine; }
+
 private:
 
 	Engine(const Engine& other) {}
