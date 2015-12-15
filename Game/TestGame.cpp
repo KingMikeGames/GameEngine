@@ -9,7 +9,7 @@ void TestGame::Init()
 
 	maze[0][0] = 0; maze[0][1] = 0; maze[0][2] = 2; maze[0][3] = 0; maze[0][4] = 0; maze[0][5] = 0; maze[0][6] = 0; maze[0][7] = 0; maze[0][8] = 0; maze[0][9] = 0;
 	maze[1][0] = 0; maze[1][1] = 1; maze[1][2] = 1; maze[1][3] = 1; maze[1][4] = 1; maze[1][5] = 1; maze[1][6] = 1; maze[1][7] = 1; maze[1][8] = 1; maze[1][9] = 0;
-	maze[2][0] = 0; maze[2][1] = 0; maze[2][2] = 0; maze[2][3] = 0; maze[2][4] = 0; maze[2][5] = 1; maze[2][6] = 0; maze[2][7] = 0; maze[2][8] = 1; maze[2][9] = 0;
+	maze[2][0] = 0; maze[2][1] = 1; maze[2][2] = 0; maze[2][3] = 0; maze[2][4] = 0; maze[2][5] = 1; maze[2][6] = 0; maze[2][7] = 0; maze[2][8] = 1; maze[2][9] = 0;
 	maze[3][0] = 0; maze[3][1] = 0; maze[3][2] = 1; maze[3][3] = 1; maze[3][4] = 1; maze[3][5] = 1; maze[3][6] = 0; maze[3][7] = 0; maze[3][8] = 0; maze[3][9] = 0;
 	maze[4][0] = 0; maze[4][1] = 0; maze[4][2] = 1; maze[4][3] = 0; maze[4][4] = 1; maze[4][5] = 0; maze[4][6] = 0; maze[4][7] = 0; maze[4][8] = 1; maze[4][9] = 0;
 	maze[5][0] = 0; maze[5][1] = 1; maze[5][2] = 1; maze[5][3] = 0; maze[5][4] = 1; maze[5][5] = 1; maze[5][6] = 1; maze[5][7] = 1; maze[5][8] = 1; maze[5][9] = 0;
@@ -74,15 +74,19 @@ void TestGame::Update(float delta)
 		{
 		case 0:
 			if (maze[(position[0] + 1) % 10][position[1]] != 0 || maze[(position[0] + 1) % 10][position[1]] != 3)
+				position[0]++;
 				break;
 		case 1:
 			if (maze[(position[0])][(position[1] + 1) % 10] != 0 || maze[position[0]][(position[1] + 1) % 10] != 3)
+				position[1]++;
 				break;
 		case 2:
 			if (maze[(position[0] + 9) % 10][position[1]] != 0 || maze[(position[0] + 9) % 10][position[1]] != 3)
+				position[0]--;
 				break;
 		case 3:
 			if (maze[(position[0])][(position[1] + 9) % 10] != 0 || maze[position[0]][(position[1] + 9) % 10] != 3)
+				position[1]--;
 				break;
 		default:
 			break;
@@ -94,15 +98,19 @@ void TestGame::Update(float delta)
 		{
 		case 0:
 			if (maze[(position[0] + 9) % 10][position[1]] != 0 || maze[(position[0] + 9) % 10][position[1]] != 3)
+				position[0]--;
 			break;
 		case 1:
 			if (maze[(position[0])][(position[1] + 9) % 10] != 0 || maze[position[0]][(position[1] + 9) % 10] != 3)
+				position[1]--;
 			break;
 		case 2:
 			if (maze[(position[0] + 1) % 10][position[1]] != 0 || maze[(position[0] + 1) % 10][position[1]] != 3)
+				position[0]++;
 			break;
 		case 3:
 			if (maze[(position[0])][(position[1] + 1) % 10] != 0 || maze[position[0]][(position[1] + 1) % 10] != 3)
+				position[1]++;
 			break;
 		default:
 			break;
