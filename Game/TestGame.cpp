@@ -71,7 +71,7 @@ void TestGame::Update(float delta)
 	{
 		if (maze[(position[0] + 1) % 10] != 0)
 		{
-		
+			
 		}
 	}
 	else if (Input::getKeyDown(KEY::KEY_S))
