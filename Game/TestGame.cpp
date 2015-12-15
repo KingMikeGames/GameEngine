@@ -20,10 +20,11 @@ void TestGame::Init()
 
 
 	m_mesh = new Mesh("res/models/crate.obj");
+	m_mesh1 = new Mesh("res/models/cat.obj");
 	m_texture = new Texture("crate_tex3.jpg");
 	m_texture1 = new Texture("animu_tex.jpg");
 	m_texture2 = new Texture("start_tex.png");
-	m_texture3 = new Texture("animu_tex.jpg");
+	m_texture3 = new Texture("cat_diff.tga");
 	m_material = Material(m_texture, glm::vec3(1, 1, 1));
 	m_material1 = Material(m_texture1, glm::vec3(1, 1, 1));
 	m_material2 = Material(m_texture2, glm::vec3(1, 1, 1));
@@ -31,8 +32,12 @@ void TestGame::Init()
 	m_meshRenderer = new MeshRenderer(*m_mesh, m_material);
 	m_meshRenderer1 = new MeshRenderer(*m_mesh, m_material1);
 	m_meshRenderer2 = new MeshRenderer(*m_mesh, m_material2);
-	m_meshRenderer3 = new MeshRenderer(*m_mesh, m_material3);
+	m_meshRenderer3 = new MeshRenderer(*m_mesh1, m_material3);
 
+	cat.AddComponent(m_meshRenderer3);
+	cat.GetTransform().setPosition(glm::vec3(16, 2, 39));
+	AddToScene(cat);
+	
 
 	for (unsigned int i = 0; i < 10; ++i)
 	{
@@ -52,7 +57,7 @@ void TestGame::Init()
 				position[1] = j;
 				break;
 			case 3:
-				AddCube(glm::vec3(j * 4, -1, i * 4 + 3), m_meshRenderer3);
+				AddCube(glm::vec3(j * 4, -1, i * 4 + 3), m_meshRenderer1);
 				break;
 			default:
 				break;
@@ -68,6 +73,8 @@ void TestGame::Init()
 
 void TestGame::Update(float delta)
 {
+	catRot += 0.05;
+	cat.GetTransform().setRotation(glm::angleAxis(catRot, glm::vec3(0, 1, 0)));
 	if (Input::getKeyDown(KEY::KEY_W))
 	{
 		switch (dir)

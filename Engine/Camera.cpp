@@ -77,6 +77,7 @@ void Camera::input(float delta)
 		rotateX(90 * 3.1415926 / 180);
 	}
 
+
 }
 
 glm::mat4 Camera::GetViewProjection() const

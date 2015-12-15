@@ -27,7 +27,11 @@ private:
 	int dir;
 	std::vector<GameObject> mazeObjects;
 
+
+	float catRot = 0;
+	GameObject cat;
 	Mesh* m_mesh;
+	Mesh* m_mesh1;
 	Material m_material;
 	Material m_material1;
 	Material m_material2;
