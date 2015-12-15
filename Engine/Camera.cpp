@@ -8,7 +8,7 @@
 bool mouseLocked = false;
 
 Camera::Camera(float fov, float aspect, float zNear, float zFar) :
-	m_pos(glm::vec3(8, 0, 3)),
+	m_pos(glm::vec3(0, 0, 0)),
 	m_forward(glm::vec3(0, 0, 1)),
 	m_up(glm::vec3(0, 1, 0))
 {
@@ -18,8 +18,8 @@ Camera::Camera(float fov, float aspect, float zNear, float zFar) :
 void Camera::input(float delta)
 {
 	float moveAmount = (float)(5.0f * delta);
-	
-	/*float sensitivity = 0.005f;
+	/*
+	float sensitivity = 0.005f;
 	float rotationAmount = (float)(delta);
 
 	if (Input::getKey(KEY::KEY_ESCAPE))
@@ -60,23 +60,23 @@ void Camera::input(float delta)
 	}
 	*/
 
-	if (Input::getKeyDown(KEY::KEY_W))
+	if (Input::getKey(KEY::KEY_W))
 	{
-		move(getForward(), 4);
+		move(getForward(), moveAmount);
 	}
-	if (Input::getKeyDown(KEY::KEY_S))
+	if (Input::getKey(KEY::KEY_S))
 	{
-		move(getForward(), -4);
+		move(getForward(), -moveAmount);
 	}
-	if (Input::getKeyDown(KEY::KEY_A))
+	if (Input::getKey(KEY::KEY_A))
 	{
-		rotateX(-90 * 3.14159 / 180);
+		move(getLeft(), -moveAmount);
 	}
-	if (Input::getKeyDown(KEY::KEY_D))
+	if (Input::getKey(KEY::KEY_D))
 	{
-		rotateX(90 * 3.14159 / 180);
+		move(getRight(), -moveAmount);
 	}
-	
+
 }
 
 glm::mat4 Camera::GetViewProjection() const

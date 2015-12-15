@@ -1,6 +1,7 @@
 #pragma once
 #include "gameObject.h"
 
+#include "gameObject.h"
 
 /*
 * The Game class is the base class for the class you create for your game
@@ -8,14 +9,13 @@
 class Game
 {
 public:
-	static Game* runningGame;
-	Game() { }
+	Game() {}
 	virtual ~Game() {}
 
 	/*
 	* Initialize whatever you want here
 	*/
-	virtual void Init() { runningGame = this; }
+	virtual void Init() {}
 
 	/*
 	* Runs all keyboard and mouse events
@@ -32,9 +32,6 @@ public:
 	* @return Root game object
 	*/
 	inline GameObject& GetRoot() { return m_root; }
-
-	
-
 protected:
 	/*
 	* Adds objects to the scene graph
