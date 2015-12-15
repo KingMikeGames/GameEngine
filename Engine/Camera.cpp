@@ -60,21 +60,21 @@ void Camera::input(float delta)
 	}
 	*/
 
-	if (Input::getKey(KEY::KEY_W))
+	if (Input::getKeyDown(KEY::KEY_W))
 	{
-		move(getForward(), moveAmount);
+		move(getForward(), 4);
 	}
-	if (Input::getKey(KEY::KEY_S))
+	if (Input::getKeyDown(KEY::KEY_S))
 	{
-		move(getForward(), -moveAmount);
+		move(getForward(), -4);
 	}
-	if (Input::getKey(KEY::KEY_A))
+	if (Input::getKeyDown(KEY::KEY_A))
 	{
-		move(getLeft(), -moveAmount);
+		rotateX(-90 * 3.1415926 / 180);
 	}
-	if (Input::getKey(KEY::KEY_D))
+	if (Input::getKeyDown(KEY::KEY_D))
 	{
-		move(getRight(), -moveAmount);
+		rotateX(90 * 3.1415926 / 180);
 	}
 
 }
