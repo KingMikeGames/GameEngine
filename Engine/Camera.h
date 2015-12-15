@@ -1,6 +1,9 @@
 #pragma once
 
 #include <glm\glm.hpp>
+#include <glm\gtx\transform.hpp>
+
+
 
 /*
 * The camera class is a camera able to be moved around to change view of the world
@@ -8,6 +11,15 @@
 class Camera
 {
 public:
+
+	Camera()	
+	{
+		m_pos = glm::vec3(0, 0, 0);
+		m_forward = glm::vec3(0, 0, 1);
+		m_up = glm::vec3(0, 1, 0);
+		m_projection = glm::perspective(glm::radians(70.0f), (float)1080/720, 0.01f, 1000.0f);
+	}
+
 	/*
 	* Sets up the perspective view matrix
 	* @param fov Angle that the camera is able to see

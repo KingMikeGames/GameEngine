@@ -102,7 +102,7 @@ public:
 	* @param material Material of the game object
 	* @param renderingEngine Current engine used for rendering
 	*/
-	virtual void UpdateUniforms(const Transform& transform, const Material& material, RenderingEngine* renderingEngine);
+	virtual void UpdateUniforms(const Transform& transform, const Material& material, AbstractRenderer* renderingEngine);
 
 private:
 	/*

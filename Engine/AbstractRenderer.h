@@ -5,17 +5,13 @@
 class GameObject;
 
 /*
-* This is the current renderer that uses OpenGL and is totally not abstract at all
+* This is the abstract renderer
 */
 class AbstractRenderer
 {
 public:
-	/*
-	* Sets up the camera and initializes OpenGL
-	*/
-	AbstractRenderer() :
-	m_mainCamera(glm::radians(70.0f), Window::GetAspect(), 0.01f, 1000.0f)
-	{}
+
+	AbstractRenderer() {};
 
 	/*
 	* Handles all keyboard and mouse events

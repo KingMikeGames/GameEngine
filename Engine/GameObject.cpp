@@ -35,7 +35,7 @@ void GameObject::Update(float delta)
 	}
 }
 
-void GameObject::Render(Shader* shader, RenderingEngine* renderingEngine)
+void GameObject::Render(Shader* shader, AbstractRenderer* renderingEngine)
 {
 	for (unsigned int i = 0; i < m_components.size(); i++)
 		m_components[i]->Render(m_transform, shader, renderingEngine);

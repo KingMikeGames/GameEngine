@@ -40,7 +40,7 @@ public:
 	* @param shader Shader program used to render
 	* @param renderingEngine The renderer
 	*/
-	void Render(Shader* shader, RenderingEngine* renderingEngine);
+	void Render(Shader* shader, AbstractRenderer* renderingEngine);
 
 	/*
 	* Gets transform of the GameObject

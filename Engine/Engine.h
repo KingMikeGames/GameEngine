@@ -58,6 +58,6 @@ private:
 	Game* m_game;
 
 	/* The rendering engine using OpenGL */
-	RenderingEngine* m_renderingEngine;
+	AbstractRenderer* m_renderingEngine;
 };
 
