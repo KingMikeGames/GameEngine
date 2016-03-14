@@ -10,38 +10,14 @@ public:
 	virtual void Update(float delta);
 	virtual ~TestGame();
 
-	void AddCube(glm::vec3 position, MeshRenderer* meshRenderer);
 protected:
 private:
 	TestGame(const TestGame& other) {}
 	void operator=(const TestGame& other) {}
 
-	int maze[10][10];
-	int position[2];
-	enum direction 
-	{	UP = 0,
-		LEFT = 1,
-		DOWN = 2,
-		RIGHT = 3
-	};
-	int dir;
-	std::vector<GameObject> mazeObjects;
-
-
-	float catRot = 0;
-	GameObject cat;
 	Mesh* m_mesh;
-	Mesh* m_mesh1;
 	Material m_material;
-	Material m_material1;
-	Material m_material2;
-	Material m_material3;
 	Texture* m_texture;
-	Texture* m_texture1;
-	Texture* m_texture2;
-	Texture* m_texture3;
 	MeshRenderer* m_meshRenderer;
-	MeshRenderer* m_meshRenderer1;
-	MeshRenderer* m_meshRenderer2;
-	MeshRenderer* m_meshRenderer3;
+	GameObject cube;
 };

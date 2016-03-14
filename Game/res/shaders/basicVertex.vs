@@ -6,13 +6,13 @@ layout (location = 2) in vec2 uv;
 layout (location = 3) in vec4 color;
 
 out vec4 colour;
-out vec2 texCoord0;
+out vec3 texCoord;
 
 uniform mat4 transform;
 
 void main()
 {
 	colour = vec4(color);
-	texCoord0 = uv;
+	texCoord = normalize(position);
 	gl_Position = transform * vec4(position, 1.0);
 }

@@ -17,6 +17,10 @@ public:
 	*/
 	Texture(const std::string& fileName, GLenum textureTarget = GL_TEXTURE_2D, GLfloat filter = GL_LINEAR);
 
+	//for skyboxes
+	Texture(const std::string &filenamePosX, const std::string &filenameNegX,
+		const std::string &filenamePosY, const std::string &filenameNegY,
+		const std::string &filenamePosZ, const std::string &filenameNegZ);
 	/*
 	* Texture created from raw data
 	* @param width Width of texture
@@ -56,5 +60,6 @@ private:
 	* @param filter Algorithm used to scale texture (GL_LINEAR, GL_NEAREST, etc)
 	*/
 	void initTexture(int width, int height, unsigned char* data, GLenum textureTarget, GLfloat filter);
+	void loadCubeMap(unsigned char* data[6], int width, int height);
 };
 

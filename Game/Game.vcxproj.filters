@@ -25,6 +25,8 @@
   <ItemGroup>
     <None Include="res\shaders\basicFragment.fs" />
     <None Include="res\shaders\basicVertex.vs" />
+    <None Include="res\shaders\blinnPhongFragment.fs" />
+    <None Include="res\shaders\blinnPhongVertex.vs" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TestGame.h">

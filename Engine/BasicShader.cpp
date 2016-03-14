@@ -1,7 +1,5 @@
 #include "BasicShader.h"
 
-
-
 BasicShader::BasicShader()
 {
 	addVertexShaderFromFile("basicVertex.vs");
@@ -9,8 +7,8 @@ BasicShader::BasicShader()
 	compileShader();
 
 	addUniform("transform");
-	addUniform("color");
-	//addUniform("sampler2D");
+	//addUniform("color");
+	//addUniform("samplerCube");
 }
 
 static unsigned char whitePixel[] = { 0xFF, 0xFF, 0xFF, 0xFF };
@@ -28,5 +26,5 @@ void BasicShader::UpdateUniforms(const Transform& transform, const Material& mat
 	glm::mat4 projectedMatrix = renderingEngine->GetMainCamera().GetViewProjection() * worldMatrix;
 
 	setUniform("transform", projectedMatrix);
-	setUniform("color", material.color);
+	//	setUniform("color", material.color);
 }
