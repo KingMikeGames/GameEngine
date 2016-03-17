@@ -23,6 +23,8 @@ public:
 	*/
 	void AddComponent(GameComponent* component);
 
+	Shader* GetShader();
+
 	/*
 	* Handles all keyboard and mouse events
 	* @param delta Time between frames
@@ -42,6 +44,8 @@ public:
 	*/
 	void Render(Shader* shader, AbstractRenderer* renderingEngine);
 
+	void Use(Shader* shader);
+
 	/*
 	* Gets transform of the GameObject
 	* @return Transform of the GameObject
@@ -57,4 +61,6 @@ private:
 
 	/* Transform of the GameObject */
 	Transform m_transform;
+
+	Shader* activeShader;
 };

@@ -18,6 +18,7 @@ private:
 	Mesh* m_mesh;
 	Material m_material;
 	Texture* m_texture;
+	Skybox* m_skybox;
 	MeshRenderer* m_meshRenderer;
 	GameObject cube;
 };

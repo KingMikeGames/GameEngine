@@ -13,6 +13,7 @@ uniform mat4 transform;
 void main()
 {
 	colour = vec4(color);
-	texCoord = normalize(position);
-	gl_Position = transform * vec4(position, 1.0);
+	texCoord = position;
+	vec4 pos = transform * vec4(position, 1.0);
+	gl_Position = pos;
 }

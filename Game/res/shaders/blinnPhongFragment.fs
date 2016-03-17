@@ -5,10 +5,10 @@ precision mediump float;
 in vec3 normalInterp;
 in vec3 vertPos;
 
-in vec3 texCoord0;
+in vec2 texCoord0;
 in vec4 colour;
 
-uniform samplerCube sampler;
+uniform sampler2D sampler;
 
 const vec3 lightPos = vec3(50.0,50.0,0.0);
 const vec3 ambientColor = vec3(0.1, 0.1, 0.1);
@@ -22,7 +22,7 @@ void main()
 
 	vec3 normal = normalize(normalInterp);
 	vec3 lightDir = normalize(lightPos - vertPos);
-	vec4 textureColor = texture3D(sampler, texCoord0.xyz);
+	vec4 textureColor = texture2D(sampler, texCoord0.xy);
 	float lambertian = max(dot(lightDir,normal), 0.0);
 	float specular = 0.0;
 

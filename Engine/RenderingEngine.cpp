@@ -7,10 +7,10 @@
 RenderingEngine::RenderingEngine() :
 	m_mainCamera(glm::radians(70.0f), Window::GetAspect(), 0.01f, 1000.0f)
 {
-	glClearColor(1.f, .7f, 1.f, 1.f);
+	glClearColor(0.f, .7f, 1.f, 1.f);
 
 	//glFrontFace(GL_CW);
-	glCullFace(GL_FRONT);
+	glCullFace(GL_BACK);
 	glEnable(GL_CULL_FACE);
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_DEPTH_CLAMP);
@@ -30,5 +30,5 @@ void RenderingEngine::Render(GameObject* object)
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	object->Render(BasicShader::getInstance(), this);
+	object->Render(object->GetShader(), this);
 }

@@ -8,7 +8,7 @@
 bool mouseLocked = false;
 
 Camera::Camera(float fov, float aspect, float zNear, float zFar) :
-	m_pos(glm::vec3(0, 0, 0)),
+	m_pos(glm::vec3(0, 0, -3)),
 	m_forward(glm::vec3(0, 0, 1)),
 	m_up(glm::vec3(0, 1, 0))
 {
@@ -26,6 +26,11 @@ void Camera::input(float delta)
 	{
 		Input::setCursor(true);
 		mouseLocked = false;
+	}
+
+	if (Input::getKey(KEY::KEY_H))
+	{
+		m_pos = glm::vec3(0, 0, 0);
 	}
 
 	if (mouseLocked)
@@ -77,11 +82,11 @@ void Camera::input(float delta)
 	}
 	if (Input::getKey(KEY::KEY_E))
 	{
-		move(getUp(), moveAmount);
+		move(glm::vec3(0, 1, 0), moveAmount);
 	}
 	if (Input::getKey(KEY::KEY_Q))
 	{
-		move(getUp(), -moveAmount);
+		move(glm::vec3(0,1,0), -moveAmount);
 	}
 
 }

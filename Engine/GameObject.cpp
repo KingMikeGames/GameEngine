@@ -11,6 +11,11 @@ void GameObject::AddComponent(GameComponent* component)
 	m_components.push_back(component);
 }
 
+Shader* GameObject::GetShader()
+{
+	return activeShader;
+}
+
 void GameObject::Input(float delta)
 {
 	for (unsigned int i = 0; i < m_components.size(); i++)
@@ -42,4 +47,9 @@ void GameObject::Render(Shader* shader, AbstractRenderer* renderingEngine)
 
 	for (unsigned int i = 0; i < m_children.size(); i++)
 		m_children[i]->Render(shader, renderingEngine);
+}
+
+void GameObject::Use(Shader* shader)
+{
+	activeShader = shader;
 }

@@ -1,19 +1,17 @@
-#include "BasicShader.h"
-#include <SDL/SDL.h>
+#include "SkyboxShader.h"
 
-BasicShader::BasicShader()
+SkyboxShader::SkyboxShader()
 {
-	addVertexShaderFromFile("basic.vert");
-	addFragmentShaderFromFile("basic.frag");
+	addVertexShaderFromFile("basicSkybox.vert");
+	addFragmentShaderFromFile("basicSkybox.frag");
 	compileShader();
 
 	addUniform("transform");
-	addUniform("time");
 }
 
 static unsigned char whitePixel[] = { 0xFF, 0xFF, 0xFF, 0xFF };
 
-void BasicShader::UpdateUniforms(const Transform& transform, const Material& material, AbstractRenderer* renderingEngine)
+void SkyboxShader::UpdateUniforms(const Transform& transform, const Material& material, AbstractRenderer* renderingEngine)
 {
 	static Texture WHITE = Texture(1, 1, whitePixel);
 
@@ -26,5 +24,4 @@ void BasicShader::UpdateUniforms(const Transform& transform, const Material& mat
 	glm::mat4 projectedMatrix = renderingEngine->GetMainCamera().GetViewProjection() * worldMatrix;
 
 	setUniform("transform", projectedMatrix);
-	setUniformi("time", SDL_GetTicks());
 }

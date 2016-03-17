@@ -23,13 +23,15 @@
     <ClCompile Include="TestGame.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\shaders\basicFragment.fs" />
-    <None Include="res\shaders\basicVertex.vs" />
-    <None Include="res\shaders\blinnPhongVertex.vs" />
-    <None Include="res\shaders\blinnPhongFragment.fs" />
+    <ClInclude Include="TestGame.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="TestGame.h" />
+    <None Include="res\shaders\basic.frag" />
+    <None Include="res\shaders\basic.vert" />
+    <None Include="res\shaders\basicSkybox.frag" />
+    <None Include="res\shaders\basicSkybox.vert" />
+    <None Include="res\shaders\blinnPhongFragment.fs" />
+    <None Include="res\shaders\blinnPhongVertex.vs" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{D4EC6D5A-1433-4FEB-B651-819A5E036EEC}</ProjectGuid>
@@ -89,6 +91,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(SolutionDir);$(SolutionDir)/deps/include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <LibraryPath>$(SolutionDir);$(SolutionDir)/deps/lib;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -117,10 +121,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opengl32.lib;glew32.lib;glew32s.lib;SDL2.lib;SDL2main.lib;engine.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

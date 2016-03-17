@@ -41,22 +41,22 @@ Texture::Texture(const std::string &filenamePosX, const std::string &filenameNeg
 			{
 			case 0:
 				std::cerr << "Unable to load cube map texture " << filenamePosX << std::endl;
-				continue;
+				break;
 			case 1:
 				std::cerr << "Unable to load cube map texture " << filenameNegX << std::endl;
-				continue;
+				break;
 			case 2:
 				std::cerr << "Unable to load cube map texture " << filenamePosY << std::endl;
-				continue;
+				break;
 			case 3:
 				std::cerr << "Unable to load cube map texture " << filenameNegY << std::endl;
-				continue;
+				break;
 			case 4:
 				std::cerr << "Unable to load cube map texture " << filenamePosZ << std::endl;
-				continue;
+				break;
 			case 5:
 				std::cerr << "Unable to load cube map texture " << filenameNegZ << std::endl;
-				continue;
+				break;
 			default:
 				break;
 			}
@@ -126,7 +126,7 @@ void Texture::initTexture(int width, int height, unsigned char * data, GLenum te
 
 void Texture::loadCubeMap(unsigned char* data[6], int width, int height)
 {
-
+	glCullFace(GL_FRONT);
 	m_textureTarget = GL_TEXTURE_CUBE_MAP;
 
 	if (width > 0 && height > 0 && (data[0] != 0 || data[1] != 0 || 
@@ -142,12 +142,8 @@ void Texture::loadCubeMap(unsigned char* data[6], int width, int height)
 		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE); 
 		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
 
-		glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data[0]);
-		glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_X, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data[1]);
-		glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_Y, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data[2]);
-		glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data[3]);
-		glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_Z, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data[4]);
-		glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_Z, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data[5]);
+		for (size_t i = 0; i < 6; ++i)
+			glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data[i]);
 		
 	}
 	else {
